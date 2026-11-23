@@ -489,7 +489,7 @@ svg{display:block}
   /* ---------- Catálogo + ponte nativa ---------- */
   // source 'pick': escolhe o APK no celular ao tocar em Instalar. // asset: nome(s) do(s) APK(s) em assets/, separados por vírgula (ex.: 'base.apk,config.arm64_v8a.apk'). source: 'play' abre a página oficial; 'apk' instala um APK embutido em assets/ (só para jogos que você tem direito de distribuir)
   var CATALOG = [
-    { id: 'dantheman', name: 'Dan the Man', pkg: 'com.halfbrick.dantheman', source: 'play', c1: '#f59e0b', c2: '#9a3412' }
+    { id: 'dantheman', name: 'Dan the Man', pkg: 'com.halfbrick.dantheman', source: 'apk', asset: 'DanTheMan.apk', c1: '#f59e0b', c2: '#9a3412' }
   ];
   var N = window.PS5Native || null;          // injetado pelo Kotlin (addJavascriptInterface)
   var installed = {}, busyPkg = {}, storeIdx = 0, libIdx = 0, mockSet = {};
