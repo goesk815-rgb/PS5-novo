@@ -111,7 +111,7 @@ svg{display:block}
 .mini-av{position:absolute;left:1064px;top:25px;width:34px;height:34px;border-radius:50%;overflow:hidden;background:#0b0c11;border:1.5px solid rgba(255,255,255,.85)}
 
 .tile{position:absolute;border-radius:9px;background:linear-gradient(160deg,rgba(255,255,255,.13),rgba(255,255,255,.06));box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
-.tile.mc,.tile.mc.sel,.tile.mc.kf{background:linear-gradient(160deg,#e52521,#8f1411);image-rendering:pixelated}
+.tile.mc,.tile.mc.sel,.tile.mc.kf{background:linear-gradient(160deg,#f59e0b,#9a3412)}
 .tile.sel{border-radius:13px;background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.09));box-shadow:0 8px 28px rgba(0,0,0,.35)}
 .tile.lib{border-radius:9px;background:rgba(70,78,96,.55);display:grid;place-items:center;box-shadow:none}
 
@@ -303,7 +303,7 @@ svg{display:block}
       <div class="tile h-in" data-t="0" style="--i:1;display:grid;place-items:center">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
       </div>
-      <div class="tile mc h-in" data-t="1" style="--i:2" aria-label="Super Mario Bros"></div>
+      <div class="tile mc h-in" data-t="1" style="--i:2" aria-label="Dan the Man"></div>
       <div class="tile h-in" data-t="2" style="--i:3"></div>
       <div class="tile h-in" data-t="3" style="--i:4"></div>
       <div class="tile h-in" data-t="4" style="--i:5"></div>
@@ -489,7 +489,7 @@ svg{display:block}
   /* ---------- Catálogo + ponte nativa ---------- */
   // source 'pick': escolhe o APK no celular ao tocar em Instalar. // asset: nome(s) do(s) APK(s) em assets/, separados por vírgula (ex.: 'base.apk,config.arm64_v8a.apk'). source: 'play' abre a página oficial; 'apk' instala um APK embutido em assets/ (só para jogos que você tem direito de distribuir)
   var CATALOG = [
-    { id: 'supermario', name: 'Super Mario Bros', pkg: 'superadventure.mario.classic.bros.retrogame', source: 'apk', asset: 'Super_Mario_Bros_v1_0_1.apk', c1: '#e52521', c2: '#8f1411' }
+    { id: 'dantheman', name: 'Dan the Man', pkg: 'com.halfbrick.dantheman', source: 'play', c1: '#f59e0b', c2: '#9a3412' }
   ];
   var N = window.PS5Native || null;          // injetado pelo Kotlin (addJavascriptInterface)
   var installed = {}, busyPkg = {}, storeIdx = 0, libIdx = 0, mockSet = {};
