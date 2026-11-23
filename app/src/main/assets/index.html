@@ -500,18 +500,28 @@ svg{display:block}
     installed = {}; list.forEach(function (p) { installed[p] = 1; busyPkg[p] = 0; });
     drawStore(); drawLib();
   }
+
+  // mostra mensagens na tela (o alert() do WebView não aparece sem WebChromeClient)
+  function ps5msg(t) {
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;left:50%;top:18%;transform:translateX(-50%);max-width:80%;background:rgba(0,0,0,.92);color:#fff;font:22px/1.35 sans-serif;padding:18px 26px;border-radius:14px;text-align:center;z-index:99999;box-shadow:0 8px 30px rgba(0,0,0,.6)';
+    d.textContent = t;
+    d.onclick = function () { d.remove(); };
+    document.body.appendChild(d);
+    setTimeout(function () { if (d.parentNode) d.remove(); }, 12000);
+  }
   function install(g) {
     if (installed[g.pkg] || busyPkg[g.pkg]) return;
     busyPkg[g.pkg] = 1; drawStore();
     if (N) { N.install(g.pkg, g.source, g.asset); return; }
-    busyPkg[g.pkg] = 0; drawStore(); alert('A instalação real só funciona dentro do app Android com a parte nativa (Kotlin). Este HTML sozinho não consegue instalar nada.');
+    busyPkg[g.pkg] = 0; drawStore(); ps5msg('A instalação real só funciona dentro do app Android com a parte nativa (Kotlin). Este HTML sozinho não consegue instalar nada.');
   }
   function openGame(g) { if (installed[g.pkg]) launch(g); else openStore(); }
-  function launch(g) { if (N) N.launch(g.pkg); else alert('Sem ponte nativa: só abre dentro do app Android.'); }
+  function launch(g) { if (N) N.launch(g.pkg); else ps5msg('Sem ponte nativa: só abre dentro do app Android.'); }
   // chamados pelo Kotlin
   window.ps5 = {
     refresh: refreshInstalled,
-    status: function (pkg, st, msg) { if (st !== 'installing') busyPkg[pkg] = 0; if (st === 'failed' && msg) alert(msg); refreshInstalled(); }
+    status: function (pkg, st, msg) { if (st !== 'installing') busyPkg[pkg] = 0; if (st === 'failed' && msg) ps5msg(msg); refreshInstalled(); }
   };
   function cardHTML(g, i, label) {
     return '<div class="gcard stag" data-i="' + i + '" style="--i:' + (i + 2) + ';left:' + (62 + i * 250) + 'px"><div class="gart" style="background:linear-gradient(160deg,' + g.c1 + ',' + g.c2 + ')">' + g.name.toUpperCase() + '</div><div class="gname">' + g.name + '</div><div class="gbtn">' + label + '</div></div>';
